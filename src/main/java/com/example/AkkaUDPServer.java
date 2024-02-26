@@ -9,6 +9,7 @@ import akka.stream.javadsl.Flow;
 import akka.stream.javadsl.RunnableGraph;
 import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
+import akka.util.ByteString;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -26,7 +27,7 @@ public class AkkaUDPServer {
           final Sink printsink = Sink.foreach(item -> {
               if (item instanceof Datagram) {
                   Datagram dg = (Datagram) item;
-                  System.out.println("Data received: " + dg.getData());
+                  System.out.println("Data received: " + dg.getData().decodeString(ByteString.UTF_8()));
               } else {
                   // Handle other types if needed
                   System.out.println("Received an unexpected type: " + item.getClass());
