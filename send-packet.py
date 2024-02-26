@@ -2,7 +2,7 @@ import socket
 
 # Specify the target IP address and port
 target_ip = '127.0.0.1'
-target_port = 12345
+target_port = 12346
 
 # Create a UDP socket
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
